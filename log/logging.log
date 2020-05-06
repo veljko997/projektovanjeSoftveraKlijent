@@ -1,0 +1,81 @@
+2020-04-27 12:48:44 INFO  ServiceLogin:57 - Login with wrong username or password
+2020-04-27 14:25:08 INFO  ServiceLogin:57 - Login with wrong username or password
+2020-04-27 14:25:13 INFO  ServiceLogin:63 - Succesfull login by administator
+2020-04-27 14:25:42 INFO  ListernInputNewMatch:66 - Unos mora biti broj i ne sme biti negativan.
+2020-04-27 14:26:03 INFO  ListernInputNewMatch:66 - Unos mora biti broj i ne sme biti negativan.
+2020-04-27 14:26:05 INFO  ListernInputNewMatch:66 - Validation error
+2020-04-27 14:26:26 INFO  ListernInputNewMatch:66 - Validation error
+2020-04-27 14:26:28 INFO  ListernInputNewMatch:66 - Validation error
+2020-04-27 14:26:37 ERROR ServiceMatch:46 - Connection reset by peer: socket write error
+2020-04-27 14:26:48 ERROR ServiceRangList:45 - Connection reset by peer: socket write error
+2020-04-27 14:26:48 ERROR ServiceRangList:45 - Connection reset by peer: socket write error
+2020-04-27 14:27:01 ERROR ServiceSelection:45 - Connection reset by peer: socket write error
+2020-04-27 14:27:01 ERROR ServiceGetAllMatches:44 - Connection reset by peer: socket write error
+2020-05-05 09:35:43 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 09:58:29 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 09:59:47 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:02:51 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:04:16 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:06:08 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:07:16 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:08:27 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:09:18 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:18:20 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:20:24 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:28:15 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:31:40 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:32:47 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:34:53 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:35:25 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:36:50 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:38:13 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:38:59 FATAL Controller:59 - Connection refused: connect
+2020-05-05 10:39:09 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:40:14 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 10:40:56 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 11:06:39 FATAL Controller:59 - Connection refused: connect
+2020-05-05 11:08:03 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 11:21:55 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 11:35:34 INFO  ServiceLogin:70 - Succesfull login by veljko
+2020-05-05 11:40:47 INFO  ServiceLogin:70 - Succesfull login by veljko
+2020-05-05 11:46:17 INFO  ServiceLogin:70 - Succesfull login by veljko1
+2020-05-05 11:52:03 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 11:53:39 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 11:56:30 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 12:00:54 INFO  ServiceLogin:70 - Succesfull login by veljko
+2020-05-05 12:01:02 INFO  ListernInputNewMatch:65 - Goals must be number and must be non negative.
+2020-05-05 12:01:06 INFO  ListernInputNewMatch:65 - Goals must be number and must be non negative.
+2020-05-05 12:01:10 INFO  ListernInputNewMatch:65 - Validation error
+2020-05-05 12:28:11 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 12:39:11 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 12:39:29 INFO  ListernInputNewMatch:65 - Unos mora biti broj i ne sme biti negativan.
+2020-05-05 12:50:02 INFO  ServiceLogin:66 - Deleted user veljko trying to login.
+2020-05-05 12:57:49 INFO  ServiceLogin:63 - Login with wrong username or password
+2020-05-05 12:57:57 INFO  ServiceLogin:70 - Succesfull login by veljko1
+2020-05-05 12:58:24 FATAL Controller:59 - Connection refused: connect
+2020-05-05 13:11:28 FATAL Controller:59 - Connection refused: connect
+2020-05-05 13:12:01 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 13:12:34 INFO  ServiceLogin:70 - Succesfull login by perapera
+2020-05-05 13:17:07 INFO  ServiceLogin:70 - Succesfull login by veljko123
+2020-05-05 13:20:46 INFO  ServiceLogin:70 - Succesfull login by veljko123
+2020-05-05 13:56:15 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 14:02:04 INFO  ServiceLogin:70 - Succesfull login by administator
+2020-05-05 14:11:16 FATAL Controller:59 - Connection refused: connect
+2020-05-05 14:11:30 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 15:11:43 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 15:13:15 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 15:19:50 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 15:21:30 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 15:22:42 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 15:24:14 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 15:25:26 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 15:31:23 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-05 15:33:02 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-06 10:17:01 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-06 10:18:37 INFO  ListernInputNewMatch:65 - Unos mora biti broj i ne sme biti negativan.
+2020-05-06 10:18:41 INFO  ListernInputNewMatch:65 - Unos mora biti broj i ne sme biti negativan.
+2020-05-06 10:18:49 INFO  ListernInputNewMatch:65 - Validation error
+2020-05-06 10:29:08 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-06 10:30:09 INFO  ServiceLogin:70 - Succesfull login by administrator
+2020-05-06 10:34:36 INFO  ServiceLogin:63 - Login with wrong username or password
+2020-05-06 10:34:44 INFO  ServiceLogin:70 - Succesfull login by administrator
