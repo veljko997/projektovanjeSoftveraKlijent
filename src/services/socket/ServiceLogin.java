@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package services.socket;
 
 import controller.Controller;
 import domain.User;
@@ -53,7 +53,6 @@ public class ServiceLogin {
             responseObject = (ResponseObject) in.readObject();
             user = (User) responseObject.getData();
         } catch (IOException | ClassNotFoundException ex) {
-            logger.error(ex.getMessage());
             throw new DatabaseException();
         }
         

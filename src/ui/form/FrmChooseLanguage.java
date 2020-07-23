@@ -6,17 +6,22 @@
 package ui.form;
 
 import java.awt.Toolkit;
+import org.apache.log4j.Logger;
+import services.socket.ServiceDeativateSelection;
 import ui.listeners.MouseListenerLocale;
 
 /**
  *
  * @author Veljko
  */
-public class FrmChooseLanguage extends javax.swing.JFrame {
+public final class FrmChooseLanguage extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmChoseLanguage
      */
+    private Class controllerClass;
+    private final Logger logger = Logger.getLogger(ServiceDeativateSelection.class);
+
     public FrmChooseLanguage() {
         initComponents();
         prepareView();
@@ -143,14 +148,11 @@ public class FrmChooseLanguage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmChooseLanguage().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FrmChooseLanguage().setVisible(true);
         });
     }
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -167,5 +169,11 @@ public class FrmChooseLanguage extends javax.swing.JFrame {
         jLblSerbian.addMouseListener(new MouseListenerLocale(this, "sr", "RS"));
     }
 
-}
+    public Class getController() {
+        return controllerClass;
+    }
 
+    public void setController(Class controllerClass) {
+        this.controllerClass = controllerClass;
+    } 
+}

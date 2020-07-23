@@ -58,7 +58,7 @@ public class ListenerDeleteSelection implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(frmViewRangList, resourceBundle.getString("ussucesfullyDeleted"));
             }
-        } catch (ServerException ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
     }
@@ -71,8 +71,7 @@ public class ListenerDeleteSelection implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(frmViewRangList, resourceBundle.getString("unsucesfullyDeactivated"));
             }
-        } catch (ServerException ex) {
-            ex.printStackTrace();
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
     }

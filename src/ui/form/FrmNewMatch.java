@@ -14,6 +14,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
 import ui.components.PanelInputComboBox;
 import ui.components.PanelInputDate;
@@ -197,9 +198,9 @@ public class FrmNewMatch extends javax.swing.JFrame {
             panelInputMatchType.initialize(Controller.getInstance().getAllMatchTypes());
             panelInputHost.initialize(Controller.getInstance().getAllSelections());
             panelInputAway.initialize(Controller.getInstance().getAllSelections());
-        } catch (ServerException ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
-        }
+        } 
     }
 
     public PanelInputComboBox getPanelInputAway() {

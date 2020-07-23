@@ -6,9 +6,15 @@
 package ui.listeners;
 
 import controller.Controller;
+import controller.RMIController;
+import controller.SocketController;
 import exceptions.ServerException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import ui.form.FrmChooseLanguage;
 import ui.form.FrmChooseLoginOrRegistration;
@@ -37,9 +43,10 @@ public class MouseListenerLocale implements MouseListener{
             Controller.getInstance().writeLanguage(language, country);
             new FrmChooseLoginOrRegistration().setVisible(true);
             frmChooseLanguage.setVisible(false);
-        } catch (ServerException ex) {
-            JOptionPane.showMessageDialog(frmChooseLanguage, ex.getMessage()+"!", "Error", 1);
-        }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(frmChooseLanguage, "Server error. Try again later!", "Error", 1);
+            frmChooseLanguage.dispose();
+        } 
     }
 
     @Override
@@ -57,5 +64,6 @@ public class MouseListenerLocale implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
     }
+    
     
 }

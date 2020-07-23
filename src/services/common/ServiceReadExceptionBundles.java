@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package services.common;
 
 import controller.Controller;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import org.apache.log4j.Logger;
@@ -17,12 +16,12 @@ import org.apache.log4j.Logger;
  * @author Veljko
  */
 public class ServiceReadExceptionBundles {
-    
-   private final static Logger LOGGER = Logger.getLogger(ServiceReadExceptionBundles.class);
+
+    private final static Logger LOGGER = Logger.getLogger(ServiceReadExceptionBundles.class);
 
     public static Exception readException(Exception ex) {
         try {
-            Locale locale = Controller.getLocale();
+            Locale locale = Controller.getInstance().getLocale();
 
             String exceptionType = ex.getClass().getName();
             ResourceBundle resourceBundle = ResourceBundle.getBundle("resourceBundles.ResourceBundle_Exception_" + locale);
@@ -31,10 +30,11 @@ public class ServiceReadExceptionBundles {
             Class<?> c = Class.forName(exceptionType);
             Constructor<?> cons = c.getConstructor(String.class);
             ex = (Exception) cons.newInstance(message);
+            return ex;
 
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException ex1) {
-           LOGGER.error(ex.getMessage());
+        } catch (Exception ex1) {
+            LOGGER.error(ex1.getMessage());
+            return ex1;
         }
-        return ex;
     }
 }

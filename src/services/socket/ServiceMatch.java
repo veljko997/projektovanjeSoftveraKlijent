@@ -3,47 +3,50 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package services.socket;
 
 import domain.Match;
-import domain.Selection;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashMap;
 import org.apache.log4j.Logger;
 import transfer.RequestObject;
 import transfer.ResponseObject;
 import static util.Operation.*;
+import util.ResponseStatus;
 
 /**
  *
- * @author Veljko
+ * @author veljko
  */
-public class ServiceGetAllMatches {
+public class ServiceMatch {
 
+    private final Logger logger = Logger.getLogger(ServiceMatch.class);
     private final ObjectOutputStream out;
     private final ObjectInputStream in;
-    private final Logger logger = Logger.getLogger(ServiceGetAllMatches.class);
 
-    public ServiceGetAllMatches(ObjectOutputStream out, ObjectInputStream in) {
+    public ServiceMatch(ObjectOutputStream out, ObjectInputStream in) {
         this.out = out;
         this.in = in;
     }
 
-    public List<Match> getAll(Selection selection) {
-        List<Match> matches = new LinkedList<>();
+    public boolean saveMatch(Match match, int id) {
         RequestObject requestObject = new RequestObject();
-        requestObject.setData(selection);
-        requestObject.setOperation(OPERATION_GET_ALL_MATCHES);
+        requestObject.setOperation(OPERATION_SAVE_MATCH);
+        HashMap<String, Object> hashMap = new HashMap<>();
+        
+        hashMap.put("Match", match);
+        hashMap.put("Id", id);
+        requestObject.setData(hashMap);
+        
         try {
             out.writeObject(requestObject);
-            matches = (List<Match>) ((ResponseObject) in.readObject()).getData();
+            ResponseObject responseObject = (ResponseObject) in.readObject();
+            return responseObject.getStatus() == ResponseStatus.SUCESS;
         } catch (IOException | ClassNotFoundException ex) {
             logger.error(ex.getMessage());
+            return false;
         }
-        return matches;
     }
-
 }

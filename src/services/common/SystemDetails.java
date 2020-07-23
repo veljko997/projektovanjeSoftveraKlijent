@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package services.common;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -17,7 +17,6 @@ import org.apache.log4j.Logger;
 public class SystemDetails {
 
     private static Properties properties = new Properties();
-    private static SystemDetails instance;
     private final Logger logger = Logger.getLogger(SystemDetails.class);
 
     private SystemDetails() {
@@ -29,51 +28,45 @@ public class SystemDetails {
         }
     }
 
-    public Locale getLocale() {
+    public static Locale getLocale() {
         return new Locale(properties.getProperty("language"), properties.getProperty("country"));
     }
 
-    public static SystemDetails getInstance() {
-        if (instance == null) {
-            instance = new SystemDetails();
-        }
-        return instance;
-    }
 
-    public void writeLanguage(String language, String country) {
+    public static void writeLanguage(String language, String country) {
         properties.put("language", language);
         properties.put("country", country);
     }
 
-    public String getLanguage() {
+    public static String getLanguage() {
         return properties.getProperty("language");
     }
 
-    public String getCountry() {
+    public static String getCountry() {
         return properties.getProperty("country");
     }
 
-    public void writeUser(String username) {
+    public static void writeUser(String username) {
         properties.put("username", username);
     }
 
-    public void writeUserId(String id) {
+    public static void writeUserId(String id) {
         properties.put("userId", id);
     }
 
-    public String getUser() {
+    public static String getUser() {
         return properties.getProperty("username");
     }
 
-    public String getUserId() {
-        return properties.getProperty("userId");
+    public static int getUserId() {
+        return Integer.parseInt(properties.getProperty("userId"));
     }
 
-    public void writeAdministator(boolean administator) {
+    public static void writeAdministator(boolean administator) {
         properties.put("administrator", administator);
     }
 
-    public boolean getAdministrator() {
+    public static boolean getAdministrator() {
         return (boolean) properties.get("administrator");
     }
 }

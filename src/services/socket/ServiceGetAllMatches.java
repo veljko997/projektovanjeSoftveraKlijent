@@ -3,45 +3,47 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package services.socket;
 
 import domain.Match;
+import domain.Selection;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.LinkedList;
+import java.util.List;
 import org.apache.log4j.Logger;
 import transfer.RequestObject;
 import transfer.ResponseObject;
-import util.ResponseStatus;
 import static util.Operation.*;
 
 /**
  *
  * @author Veljko
  */
-public class ServiceDeleteMatch {
+public class ServiceGetAllMatches {
 
-    private static final Logger LOGGER = Logger.getLogger(ServiceDeleteMatch.class);
     private final ObjectOutputStream out;
     private final ObjectInputStream in;
+    private final Logger logger = Logger.getLogger(ServiceGetAllMatches.class);
 
-    public ServiceDeleteMatch(ObjectOutputStream out, ObjectInputStream in) {
+    public ServiceGetAllMatches(ObjectOutputStream out, ObjectInputStream in) {
         this.out = out;
         this.in = in;
     }
 
-    public boolean deleteMatch(Match match) {
+    public List<Match> getAll(Selection selection) {
+        List<Match> matches = new LinkedList<>();
         RequestObject requestObject = new RequestObject();
-        requestObject.setData(match);
-        requestObject.setOperation(OPERATION_DELETE_MATCH);
+        requestObject.setData(selection);
+        requestObject.setOperation(OPERATION_GET_ALL_MATCHES);
         try {
             out.writeObject(requestObject);
-            ResponseObject responseObject = (ResponseObject) in.readObject();
-            System.out.println(responseObject.getStatus());
-            return responseObject.getStatus() == ResponseStatus.SUCESS;
+            matches = (List<Match>) ((ResponseObject) in.readObject()).getData();
         } catch (IOException | ClassNotFoundException ex) {
-            LOGGER.error(ex.getMessage());
-            return false;
+            logger.error(ex.getMessage());
         }
+        return matches;
     }
+
 }

@@ -6,7 +6,6 @@
 package ui.form;
 
 import controller.Controller;
-import exceptions.ServerException;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.util.Locale;
@@ -142,7 +141,7 @@ public class FrmNewSelection extends javax.swing.JFrame {
     private void fillComboBoxes() {
         try {
             panelInputConfederation.initialize(Controller.getInstance().getAllConfederation());
-        } catch (ServerException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(FrmNewSelection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -14,6 +14,8 @@ import ui.form.FrmChooseLanguage;
 public class Main {
 
     public static void main(String[] args) {
-        new FrmChooseLanguage().setVisible(true);
+        FrmChooseLanguage frmChooseLanguage = new FrmChooseLanguage();
+        frmChooseLanguage.setVisible(true);
+
     }
 }

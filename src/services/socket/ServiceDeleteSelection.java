@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package services.socket;
 
 import domain.Selection;
 import java.io.IOException;
@@ -19,28 +19,30 @@ import util.ResponseStatus;
  *
  * @author Veljko
  */
-public class ServiceDeativateSelection {
+public class ServiceDeleteSelection {
 
     private final ObjectOutputStream out;
     private final ObjectInputStream in;
-    private final Logger logger = Logger.getLogger(ServiceDeativateSelection.class);
+    private static final Logger LOGGER = Logger.getLogger(ServiceDeleteSelection.class);
 
-    public ServiceDeativateSelection(ObjectOutputStream out, ObjectInputStream in) {
-        this.out = out;
-        this.in = in;
+    public ServiceDeleteSelection(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream) {
+        this.out = objectOutputStream;
+        this.in = objectInputStream;
     }
 
-    public boolean deactivateSelection(Selection selection) {
+    public boolean deleteSelection(Selection selection) {
         RequestObject requestObject = new RequestObject();
+        requestObject.setOperation(OPERATION_DELETE_SELECTION);
         requestObject.setData(selection);
-        requestObject.setOperation(OPERATION_DEACTIVATE_SELECTION);
         try {
             out.writeObject(requestObject);
             ResponseObject responseObject = (ResponseObject) in.readObject();
             return responseObject.getStatus() == ResponseStatus.SUCESS;
         } catch (IOException | ClassNotFoundException ex) {
-            logger.error(ex.getMessage());
+            LOGGER.error(ex.getMessage());
             return false;
         }
+
     }
+
 }

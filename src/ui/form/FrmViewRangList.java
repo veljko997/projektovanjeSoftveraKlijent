@@ -26,10 +26,10 @@ public class FrmViewRangList extends javax.swing.JFrame {
     /**
      * Creates new form FrmViewRangList
      */
-    int tableSize = 5;
-    int startPosition = 0;
-    List<Selection> selections;
-    ResourceBundle resourceBundle;
+    private int tableSize = 5;
+    private int startPosition = 0;
+    private List<Selection> selections;
+    private ResourceBundle resourceBundle;
 
     public FrmViewRangList() {
         initComponents();
@@ -47,15 +47,24 @@ public class FrmViewRangList extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableRangList = new javax.swing.JTable();
-        JLblBackward = new javax.swing.JLabel();
-        JLblForward = new javax.swing.JLabel();
         JLblTableSize = new javax.swing.JLabel();
         comboTableSize = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableRangList = new javax.swing.JTable();
         btnDelete = new javax.swing.JButton();
+        JLblForward = new javax.swing.JLabel();
+        JLblBackward = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        JLblTableSize.setText("Prikaz broja reprezentacija:");
+
+        comboTableSize.setModel(new javax.swing.DefaultComboBoxModel<>());
+        comboTableSize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboTableSizeActionPerformed(evt);
+            }
+        });
 
         jTableRangList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,12 +79,7 @@ public class FrmViewRangList extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableRangList);
 
-        JLblBackward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Fast-backward-icon.png"))); // NOI18N
-        JLblBackward.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JLblBackwardMouseClicked(evt);
-            }
-        });
+        btnDelete.setText("jButton1");
 
         JLblForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Button-Forward-icon.png"))); // NOI18N
         JLblForward.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -84,37 +88,32 @@ public class FrmViewRangList extends javax.swing.JFrame {
             }
         });
 
-        JLblTableSize.setText("Prikaz broja reprezentacija:");
-
-        comboTableSize.setModel(new javax.swing.DefaultComboBoxModel<>());
-        comboTableSize.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboTableSizeActionPerformed(evt);
+        JLblBackward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Fast-backward-icon.png"))); // NOI18N
+        JLblBackward.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLblBackwardMouseClicked(evt);
             }
         });
-
-        btnDelete.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(JLblBackward)
-                .addGap(72, 72, 72)
-                .addComponent(btnDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(JLblForward)
-                .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(JLblTableSize)
-                        .addGap(114, 114, 114)
+                        .addGap(50, 50, 50)
                         .addComponent(comboTableSize, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(JLblBackward)
+                        .addGap(62, 62, 62)
+                        .addComponent(btnDelete)
+                        .addGap(44, 44, 44)
+                        .addComponent(JLblForward)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,16 +122,16 @@ public class FrmViewRangList extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JLblTableSize)
                     .addComponent(comboTableSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JLblForward)
-                            .addComponent(JLblBackward)))
+                            .addComponent(JLblBackward)
+                            .addComponent(JLblForward)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(20, 20, 20)
                         .addComponent(btnDelete)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -213,7 +212,7 @@ public class FrmViewRangList extends javax.swing.JFrame {
         try {
             selections = controller.Controller.getInstance().getRangList();
             modelTable = new ModelTableRangList(selections, startPosition, tableSize);
-        } catch (ServerException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(FrmViewRangList.class.getName()).log(Level.SEVERE, null, ex);
         }
         jTableRangList.setModel(modelTable);
@@ -232,7 +231,7 @@ public class FrmViewRangList extends javax.swing.JFrame {
 
         try {
             btnDelete.setEnabled(Controller.getInstance().readAdministrator());
-        } catch (ServerException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(FrmViewRangList.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -249,10 +248,10 @@ public class FrmViewRangList extends javax.swing.JFrame {
     public ResourceBundle getResourceBundle() {
         return resourceBundle;
     }
-    
+
     public int getStartPositon() {
         return startPosition;
-    }  
+    }
 
     public List<Selection> getSelections() {
         return selections;
@@ -261,6 +260,4 @@ public class FrmViewRangList extends javax.swing.JFrame {
     public void setSelections(List<Selection> selections) {
         this.selections = selections;
     }
-    
-    
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package services.socket;
 
 import controller.Controller;
 import exceptions.BusyUsernameException;
@@ -50,9 +50,9 @@ public class ServiceRegistration {
             responseObject = (ResponseObject) in.readObject();
             if (responseObject.getStatus() == ResponseStatus.ERROR) {
                 if (responseObject.getErrorMessage().equals("Username is busy.")) {
-                    throw Controller.readResourceBundle(new BusyUsernameException());
+                    throw Controller.getInstance().readResourceBundle(new BusyUsernameException());
                 } else {
-                    throw Controller.readResourceBundle(new DatabaseException());
+                    throw Controller.getInstance().readResourceBundle(new DatabaseException());
                 }
             }
         } catch (IOException | ClassNotFoundException ex) {

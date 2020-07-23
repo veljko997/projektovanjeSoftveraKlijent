@@ -37,7 +37,7 @@ public class FrmViewSelection extends javax.swing.JFrame {
         initComponents();
         try {
             selection.setMatches(Controller.getInstance().getMatches(selection));
-        } catch (ServerException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(FrmViewSelection.class.getName()).log(Level.SEVERE, null, ex);
         }
         initListeners();
@@ -209,7 +209,7 @@ public class FrmViewSelection extends javax.swing.JFrame {
             if (startPositon + tableSize >= Controller.getInstance().getMatches(selection).size()) {
                 return;
             }
-        } catch (ServerException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(FrmViewSelection.class.getName()).log(Level.SEVERE, null, ex);
         }
         startPositon += tableSize;
@@ -280,7 +280,7 @@ public class FrmViewSelection extends javax.swing.JFrame {
             ModelTableSelection modelTableSelection = new ModelTableSelection(selection.getMatches(), startPositon, tableSize);
             jTableMatches.setModel(modelTableSelection);
             validate();
-        } catch (ServerException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(FrmViewSelection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -294,7 +294,7 @@ public class FrmViewSelection extends javax.swing.JFrame {
         jlblNumberMatches.setText(resourceBundle.getString("jlblNumberMatches"));
         try {
             btnDelete.setEnabled(Controller.getInstance().readAdministrator());
-        } catch (ServerException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(FrmViewSelection.class.getName()).log(Level.SEVERE, null, ex);
         }
         btnDelete.setText(resourceBundle.getString("btnDelete"));

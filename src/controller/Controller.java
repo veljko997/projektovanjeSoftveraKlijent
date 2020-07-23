@@ -8,148 +8,109 @@ package controller;
 import domain.Match;
 import domain.Selection;
 import exceptions.ServerException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
 import java.util.List;
 import java.util.Locale;
-import org.apache.log4j.Logger;
-import services.ServiceCryptPassword;
-import services.ServiceDeativateSelection;
-import services.ServiceGetAllConfederation;
-import services.ServiceGetAllMatchTypes;
-import services.ServiceGetAllMatches;
-import services.ServiceLogin;
-import services.ServiceReadExceptionBundles;
-import services.ServiceRegistration;
-import services.ServiceDeleteMatch;
-import services.ServiceDeleteSelection;
-import services.ServiceMatch;
-import services.ServiceRangList;
-import services.ServiceSelection;
-import services.SystemDetails;
+import services.common.ServiceCreateControllers;
 import wrapperEnum.WrapperConfederation;
 import wrapperEnum.WrapperMatchType;
 
 /**
  *
- * @author veljko
+ * @author Veljko
  */
 public class Controller {
 
-    private static Controller instance;
+    protected static AbstractController instance;
 
-    private final Socket socket;
-    private final ObjectOutputStream objectOutputStream;
-    private final ObjectInputStream objectInputStream;
-    private final static Logger logger = Logger.getLogger(Controller.class);
-
-    private Controller() throws IOException {
-        socket = new Socket("localhost", 9000);
-        objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-        objectInputStream = new ObjectInputStream(socket.getInputStream());
-    }
-
-    public static Controller getInstance() throws ServerException {
+    public static AbstractController getInstance() throws Exception {
         if (instance == null) {
-            try {
-                instance = new Controller();
-            } catch (IOException ex) {
-                logger.fatal(ex.getMessage());
-                throw new ServerException("Server side error");
-            }
+            instance = ServiceCreateControllers.createSocketFirst();
         }
         return instance;
     }
-
-    public void writeLanguage(String language, String country) {
-        SystemDetails.getInstance().writeLanguage(language, country);
-    }
-
-    public void login(String username, String password) throws Exception {
-        new ServiceLogin(objectOutputStream, objectInputStream).
-                LoginUser(username, cryptPassoword(password));
+    
+     public void writeLanguage(String language, String country) {
+        instance.writeLanguage(language, country);
     }
 
     public void writeUsername(String username) {
-        SystemDetails.getInstance().writeUser(username);
+        instance.writeUsername(username);
     }
 
     public void writeUserId(String id) {
-        SystemDetails.getInstance().writeUserId(id);
-    }
-
-
-    public List<Selection> getAllSelections() {
-        return new ServiceSelection(objectOutputStream, objectInputStream).
-                getAllSelections();
-    }
-
-    public boolean saveMatch(Match match) {
-        return new ServiceMatch(objectOutputStream, objectInputStream).
-                saveMatch(match,readId());
-    }
-
-    public void register(String username, String password) throws ServerException, Exception {
-        new ServiceRegistration(objectOutputStream, objectInputStream).
-                register(username, cryptPassoword(password));
-    }
-
-    public List<Selection> getRangList() {
-        return new ServiceRangList(objectOutputStream, objectInputStream).getRangList();
+        instance.writeUserId(id);
     }
 
     public List<WrapperMatchType> getAllMatchTypes() {
-        return ServiceGetAllMatchTypes.getAll();
+        return instance.getAllMatchTypes();
     }
 
     public List<WrapperConfederation> getAllConfederation() {
-        return ServiceGetAllConfederation.getAll();
-    }
-
-    public List<Match> getMatches(Selection selection) {
-        return new ServiceGetAllMatches(objectOutputStream, objectInputStream).getAll(selection);
-    }
-
-    public static Exception readResourceBundle(Exception exception) {
-        return ServiceReadExceptionBundles.readException(exception);
-    }
-
-    public static Locale getLocale() {
-        return SystemDetails.getInstance().getLocale();
-    }
-
-    public String readId() {
-        return SystemDetails.getInstance().getUserId();
-    }
-
-    public boolean saveSelection(Selection selection) {
-          return new ServiceSelection(objectOutputStream, objectInputStream).
-                saveSelection(selection,Integer.parseInt(readId().trim()));
-    }
-
-    public void writeAdministrator(boolean administator) {
-        SystemDetails.getInstance().writeAdministator(administator);
-    }
-    
-    public boolean readAdministrator() {
-        return SystemDetails.getInstance().getAdministrator();
-    }
-
-    public boolean deleteMatch(Match match) {
-        return new ServiceDeleteMatch(objectOutputStream,objectInputStream).deleteMatch(match);
-    }
-
-    public boolean deleteSelection(Selection selection) {
-        return new ServiceDeleteSelection(objectOutputStream,objectInputStream).deleteSelection(selection);
-    }
-
-    public boolean deactivateSelection(Selection selection) {
-        return new ServiceDeativateSelection(objectOutputStream, objectInputStream).deactivateSelection(selection);
+        return instance.getAllConfederation();
     }
 
     public String cryptPassoword(String password) {
-        return ServiceCryptPassword.Crypt(password);
+        return instance.cryptPassoword(password);
     }
+
+    public void writeAdministrator(boolean administator) {
+        instance.writeAdministrator(administator);
+    }
+
+    public boolean readAdministrator() {
+        return instance.readAdministrator();
+    }
+
+    public static Exception readResourceBundle(Exception exception) {
+        return instance.readResourceBundle(exception);
+    }
+
+    public static Locale getLocale() {
+        return instance.getLocale();
+    }
+
+    public int readId() {
+        return instance.readId();
+    }
+
+    public boolean deactivateSelection(Selection selection) {
+        return instance.deactivateSelection(selection);
+    }
+
+    public boolean deleteSelection(Selection selection){
+        return instance.deleteSelection(selection);
+    }
+
+    public boolean deleteMatch(Match match) {
+        return instance.deleteMatch(match);
+    }
+
+    public boolean saveSelection(Selection selection) {
+        return instance.saveSelection(selection);
+    }
+
+    public List<Match> getMatches(Selection selection){
+        return instance.getMatches(selection);
+    }
+
+    public List<Selection> getRangList(){
+        return instance.getRangList();
+    }
+
+    public void register(String username, String password) throws ServerException, Exception {
+        instance.register(username, password);
+    }
+
+    public  boolean saveMatch(Match match) {
+        return instance.saveMatch(match);
+    }
+
+    public List<Selection> getAllSelections() {
+        return instance.getAllSelections();
+    }
+
+    public void login(String username, String password) throws Exception {
+        instance.login(username, password);
+    } 
+
 }

@@ -54,7 +54,7 @@ public class ListenerDeleteMatch implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(frmViewSelection, resourceBundle.getString("Unsucesfull"), resourceBundle.getString("Title"), 1);
             }
-        } catch (ServerException ex) {
+        } catch (Exception ex) {
            logger.error(ex.getMessage());
         }
     }

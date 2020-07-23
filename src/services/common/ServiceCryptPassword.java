@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package services.common;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 public class ServiceCryptPassword {
 
     private static final Logger LOGGER = Logger.getLogger(ServiceCryptPassword.class);
-    
+
     public static String Crypt(String passoword) {
         String cyrptedPassword = "";
         try {
@@ -26,10 +26,10 @@ public class ServiceCryptPassword {
             for (byte b : digest) {
                 cyrptedPassword += String.format("%02x", b);
             }
+            return cyrptedPassword;
         } catch (NoSuchAlgorithmException ex) {
             LOGGER.error(ex.getMessage());
             throw new RuntimeException(ex);
         }
-        return cyrptedPassword;
     }
 }

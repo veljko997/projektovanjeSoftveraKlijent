@@ -200,58 +200,42 @@ public class FrmMain extends javax.swing.JFrame {
     }
 
     private void initListeners() {
-        jMenuViewSelection.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new FrmChooseSelection().setVisible(true);
+        jMenuViewSelection.addActionListener((ActionEvent e) -> {
+            new FrmChooseSelection().setVisible(true);
+        });
+
+        jCheckBoxMenuEnglish.addActionListener((ActionEvent e) -> {
+            try {
+                Controller.getInstance().writeLanguage("en", "US");
+                readMenuNames();
+                jCheckBoxSerbian.setSelected(false);
+            } catch (Exception ex) {
+                Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
 
-        jCheckBoxMenuEnglish.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Controller.getInstance().writeLanguage("en", "US");
-                    readMenuNames();
-                    jCheckBoxSerbian.setSelected(false);
-                } catch (ServerException ex) {
-                    Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        jCheckBoxSerbian.addActionListener((ActionEvent e) -> {
+            try {
+                Controller.getInstance().writeLanguage("sr", "RS");
+                readMenuNames();
+                jCheckBoxMenuEnglish.setSelected(false);
+            } catch (ServerException ex) {
+                Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
 
-        jCheckBoxSerbian.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Controller.getInstance().writeLanguage("sr", "RS");
-                    readMenuNames();
-                    jCheckBoxMenuEnglish.setSelected(false);
-                } catch (ServerException ex) {
-                    Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        jMenuItemViewRangList.addActionListener((ActionEvent e) -> {
+            new FrmViewRangList().setVisible(true);
         });
 
-        jMenuItemViewRangList.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new FrmViewRangList().setVisible(true);
-            }
+        jMenuItemNewSelection.addActionListener((ActionEvent e) -> {
+            new FrmNewSelection().setVisible(true);
         });
 
-        jMenuItemNewSelection.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new FrmNewSelection().setVisible(true);
-            }
-        });
-
-        jMenuItemNewMatch.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new FrmNewMatch().setVisible(true);
-            }
+        jMenuItemNewMatch.addActionListener((ActionEvent e) -> {
+            new FrmNewMatch().setVisible(true);
         });
     }
 }

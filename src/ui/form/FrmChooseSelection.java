@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -150,7 +151,7 @@ public class FrmChooseSelection extends javax.swing.JFrame {
             for (Selection selection1 : selection) {
                 comboSelection.addItem(selection1);
             }
-        } catch (ServerException ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
 
